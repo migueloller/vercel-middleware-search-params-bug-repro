@@ -1,5 +1,5 @@
 {
-  "name": "search-params",
+  "name": "vercel-middleware-search-params-repro",
   "version": "0.1.0",
   "private": true,
   "scripts": {
