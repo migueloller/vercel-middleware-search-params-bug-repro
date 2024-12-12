@@ -6,7 +6,16 @@ export default async function middleware(request: NextRequest) {
   // See Vercel logs and note that the URL does have the search params
   console.log({ url })
 
-  return NextResponse.rewrite(url)
+  const requestHeaders = new Headers(request.headers)
+
+  // Workaround to fix issue, comment out to see the issue
+  requestHeaders.set('x-original-url', request.url)
+
+  return NextResponse.rewrite(url, {
+    request: {
+      headers: requestHeaders,
+    },
+  })
 }
 
 export const config = {
